@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/home'
   root 'pages#home'
   post 'login', to: 'users#login'
   resources :vehicles
