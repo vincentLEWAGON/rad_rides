@@ -1,3 +1,11 @@
+<%= form_with url: "/vehicles", method: :get do |form| %>
+  <%= form.check_box :aerien %>
+  <%= form.label :aerien, "aerien" %>
+  <%= form.check_box :terrestre %>
+  <%= form.label :terrestre, "terrestre" %>
+  <%= form.submit %>
+<% end %>
+
 <div class="container mt-5">
   <div class="row">
     <% @vehicles.each do |vehicle| %>
@@ -15,3 +23,5 @@
     <% end %>
   </div>
 </div>
+
+<%= console %>
