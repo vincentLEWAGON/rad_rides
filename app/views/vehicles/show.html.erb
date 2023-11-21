@@ -1,27 +1,17 @@
-
 <div class="card" style="width: 18rem;">
-  <img src="https://fakeimg.pl/600x400" class="card-img-top" alt="Description">
-  <div class="card-body">
-    <h5 class="card-title"><%= @vehicle.name %></h5>
-    <p class="card-text"><%= @vehicle.description %></p>
-    <a href="#" class="btn btn-primary">Réserver</a>
-  </div>
-</div>
-
-<div class="card mb-3">
   <img src="https://fakeimg.pl/600x400" class="card-img-top" alt="Détails">
   <div class="card-body">
     <h5 class="card-title"><%= @vehicle.name %></h5>
     <p class="card-text"><%= @vehicle.description %></p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-</div>
-<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Catégorie : <%= @vehicle.category %></li>
+    <li class="list-group-item"> Prix : <%= @vehicle.price %> euros</li>
+  </ul>
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    raise
+    <a href="/vehicles/:vehicle_id/bookings/new" class="btn btn-primary">Réserver</a>
+    <a href="/vehicles" class="btn btn-primary">Retour</a>
   </div>
-  <img src="..." class="card-img-bottom" alt="...">
 </div>
 

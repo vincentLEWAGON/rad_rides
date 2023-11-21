@@ -11,6 +11,7 @@ class VehiclesController < ApplicationController
       flash.notice = "Annonce créee"
       redirect_to @vehicle
     end
+  end
 
   def index
     @vehicles = Vehicle.all
@@ -23,6 +24,6 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:name, :description, :category, :price)
+    params.require(:vehicle).permit(:name, :description, :category, :price, :id)
   end
 end
