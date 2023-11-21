@@ -5,8 +5,11 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new(vehicle_params)
-    @vehicle.save
-    redirect_to new_vehicle_path(@vehicle)
+    @vehicle.user = current_user
+    if @vehicle.save
+      flash.notice = "Annonce créee"
+      redirect_to @vehicle
+    end
   end
 
   def show
@@ -16,6 +19,6 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:name, :description, :price)
+    params.require(:vehicle).permit(:name, :description, :category, :price)
   end
 end
