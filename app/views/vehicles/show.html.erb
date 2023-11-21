@@ -1,14 +1,17 @@
+<div class="card" style="width: 18rem;">
+  <img src="https://fakeimg.pl/600x400" class="card-img-top" alt="Détails">
+  <div class="card-body">
+    <h5 class="card-title"><%= @vehicle.name %></h5>
+    <p class="card-text"><%= @vehicle.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Catégorie : <%= @vehicle.category %></li>
+    <li class="list-group-item"> Prix : <%= @vehicle.price %> euros</li>
+  </ul>
+  <div class="card-body">
+    raise
+    <a href="/vehicles/:vehicle_id/bookings/new" class="btn btn-primary">Réserver</a>
+    <a href="/vehicles" class="btn btn-primary">Retour</a>
+  </div>
+</div>
 
-    <div>
-      <h1><%= @vehicle.name %></h1>
-    </div>
-
-    <div>
-      <p><%= @vehicle.description %></p>
-      <p>Catégorie : <%=@vehicle.category %></p>
-      <p>Price : <%=@vehicle.price %> euros</p>
-    </div>
-
-    <div>
-      <img src="https://fakeimg.pl/600x400">
-    </div>
