@@ -1,0 +1,9 @@
+<h1>Créer mon annonce</h1>
+<%= simple_form_for @vehicle do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :price %>
+  <%= f.button :submit %>
+<% end %>
+<br>
