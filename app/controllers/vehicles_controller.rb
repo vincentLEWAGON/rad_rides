@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
     @vehicle.user = current_user
     if @vehicle.save
       flash.notice = "Annonce créee"
-      redirect_to @vehicle
+      redirect_to dashboard_my_vehicles_path
     end
   end
 
