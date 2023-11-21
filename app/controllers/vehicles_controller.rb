@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+
   def new
     @vehicle = Vehicle.new
   end
@@ -10,6 +11,9 @@ class VehiclesController < ApplicationController
       flash.notice = "Annonce créee"
       redirect_to @vehicle
     end
+
+  def index
+    @vehicles = Vehicle.all
   end
 
   def show

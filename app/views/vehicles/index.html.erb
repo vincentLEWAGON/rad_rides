@@ -1,42 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-
-    <title>Accueil - RadRides</title>
-</head>
-<body>
-
-    <div class="content">
-      <div class="voitures">
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          1
-        </div>
-
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          2
-        </div>
-
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          3
-        </div>
-
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          4
-        </div>
-
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          5
-        </div>
-
-        <div class="voiture" style="background-image: url(https://i.ibb.co/m5y80Kh/rad-rides.png)">
-          6
-        </div>
-
+<div class="container mt-5">
+  <div class="row">
+    <% @vehicles.each do |vehicle| %>
+      <!-- Carte 1 -->
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
+              <div class="card-body">
+                  <h5 class="card-title"><%= vehicle.name %></h5>
+                  <p class="card-text"><%= vehicle.description %></p>
+                  <%= link_to "en sa", vehicle_path(vehicle) %>
+              </div>
+          </div>
       </div>
-    </div>
-
-</body>
-</html>
+    <% end %>
+  </div>
+</div>
