@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
     @vehicle.user = current_user
     if @vehicle.save
       flash.notice = "Annonce créee"
-      redirect_to @vehicle
+      redirect_to dashboard_my_vehicles_path
     end
   end
 
@@ -29,6 +29,6 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:name, :description, :category, :price, :id)
+    params.require(:vehicle).permit(:name, :description, :category, :price, :id, :photo)
   end
 end
