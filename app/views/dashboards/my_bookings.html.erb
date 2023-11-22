@@ -14,6 +14,7 @@
                   <p class="card-text"><%= booking.end_date %></p>
                   <h5>Total:</h5>
                   <p class="card-text"><%= booking.price %> €</p>
+                  <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary" %>
               </div>
           </div>
       </div>

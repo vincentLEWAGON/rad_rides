@@ -1,16 +1,17 @@
 <div class="container mt-5">
   <div class="row">
-    <% current_user.reviews.each do |vehicle| %>
+    <% current_user.reviews.each do |review| %>
       <!-- Carte 1 -->
       <div class="col-md-3 mb-3">
           <div class="card">
               <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
               <div class="card-body">
-                  <h5 class="card-title"><%= reviews.rating %></h5>
-                  <p class="card-text"><%= reviews.comment %></p>
+                  <h5 class="card-title"><%= review.rating %></h5>
+                  <p class="card-text"><%= review.comment %></p>
               </div>
           </div>
       </div>
     <% end %>
   </div>
 </div>
+
