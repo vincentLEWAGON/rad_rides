@@ -4,7 +4,9 @@
       <!-- Carte 1 -->
       <div class="col-md-3 mb-3">
           <div class="card" style="width: 18rem;">
-             <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+            <% if vehicle.photo.attached? %>
+              <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+            <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= vehicle.name %></h5>
             <p class="card-text"><%= vehicle.description %></p>
