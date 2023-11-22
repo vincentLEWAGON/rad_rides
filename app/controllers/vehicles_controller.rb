@@ -14,7 +14,12 @@ class VehiclesController < ApplicationController
   end
 
   def index
-    @vehicles = Vehicle.all
+    if params["aerien"] == "1"
+      @vehicles = Vehicle.where(category: "aerien")
+    else
+      @vehicles = Vehicle.all
+
+    end
   end
 
   def show
