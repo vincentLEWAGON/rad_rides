@@ -1,3 +1,4 @@
+Booking.destroy_all if Rails.env.development?
 Vehicle.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?
 
@@ -290,8 +291,6 @@ description: "Un éléphant majestueux dont la peau est faite de cristaux étinc
   price: rand(50..200),
   user_id: User.all.sample.id
 )
-
-
 
 puts "Count user #{User.count}"
 puts "Count vehicles #{Vehicle.count}"
