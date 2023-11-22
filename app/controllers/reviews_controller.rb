@@ -16,6 +16,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def create
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.booking = Booking.find_by(id: params[:booking_id])
+    if @review.save!
+      flash.notice = "Commentaire envoyé"
+      redirect_to dashboard_my_bookings_path
+    else
+      render :new
+    end
+
   private
 
   def review_params

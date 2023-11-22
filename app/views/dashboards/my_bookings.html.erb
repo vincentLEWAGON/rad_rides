@@ -1,3 +1,5 @@
 <% @my_bookings.each do |booking| %>
   <%= booking.price %>
+  <%= link_to "Ecrire un formulaire", new_booking_review_path(booking.id) %>
 <% end %>
+
