@@ -7,6 +7,7 @@ gem "sassc-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form"
 gem "autoprefixer-rails"
+gem "dotenv-rails"
 
 gem 'faker'
 
