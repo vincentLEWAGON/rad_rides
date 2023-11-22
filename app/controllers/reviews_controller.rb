@@ -8,14 +8,6 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params["booking_id"])
   end
 
-  def create
-    @review = Review.new(review_params)
-    @review.user = current_user
-    if @review.save
-      flash.notice = "Commentaire envoyé"
-      redirect_to @reviews
-    end
-  end
 
   def create
     @review = Review.new(review_params)
