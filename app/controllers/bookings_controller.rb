@@ -6,10 +6,14 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.price = (params[:end_date] - params[:start_date]).to_i * Vehicle.find(params[:vehicle_id]).price
+    @booking.vehicle = Vehicle.find_by(id: params[:vehicle_id])
+    @booking.price = @booking.compute_price
     if @booking.save!
       flash.notice = "Réservation faite"
       redirect_to root
+      redirect_to dashboard_my_bookings_path
+    else
+      render :new
     end
 
   end
@@ -17,6 +21,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_start, :place, :price, :vehicle_id)
+    params.require(:booking).permit(:start_date, :end_date, :place)
   end
 end
