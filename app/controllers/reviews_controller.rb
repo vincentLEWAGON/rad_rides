@@ -15,4 +15,10 @@ class ReviewsController < ApplicationController
       redirect_to @reviews
     end
   end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:rating, :comment, :id, :booking_id)
+  end
 end

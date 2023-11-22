@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @booking.price = (params[:end_date] - params[:start_date]).to_i * Vehicle.find(params[:vehicle_id]).price
     if @booking.save!
       flash.notice = "Réservation faite"
-      redirect_to @root
+      redirect_to root
     end
 
   end
