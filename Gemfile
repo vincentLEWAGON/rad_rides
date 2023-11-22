@@ -9,6 +9,7 @@ gem "simple_form"
 gem "autoprefixer-rails"
 gem "dotenv-rails"
 gem "cloudinary"
+gem "geocoder"
 
 gem 'faker'
 

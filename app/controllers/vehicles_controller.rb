@@ -16,11 +16,21 @@ class VehiclesController < ApplicationController
   end
 
   def index
-    if params["aerien"] == "1"
-      @vehicles = Vehicle.where(category: "aerien")
+    if params[:filter].present?
+      @vehicles = []
+      if params["filter"]["aerien"] == "1"
+        @vehicles << Vehicle.where(category: "aerien")
+      end
+      if params["filter"]["maritime"] == "1"
+        @vehicles << Vehicle.where(category: "maritime")
+      end
+      if params["filter"]["terrestre"] == "1"
+        @vehicles << Vehicle.where(category: "terrestre")
+      end
+      @vehicles = @vehicles.flatten
+      @vehicles = Vehicle.all if @vehicles.empty?
     else
       @vehicles = Vehicle.all
-
     end
   end
 

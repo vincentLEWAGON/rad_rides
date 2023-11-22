@@ -10,7 +10,7 @@ user_4 = User.create!(first_name: "Carine", last_name: "Wagon", postal_code: 750
   Vehicle.create!(
     name: Faker::Vehicle.model,
     description: Faker::Vehicle.car_options,
-    category: ["maritime", "terreste", "aerien"].sample,
+    category: ["maritime", "terrestre", "aerien"].sample,
     price: rand(50..200),
     user_id: User.all.sample.id
     )
