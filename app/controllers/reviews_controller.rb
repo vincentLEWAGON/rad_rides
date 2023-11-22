@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @booking = Booking.find(params["booking_id"])
   end
 
   def create
@@ -26,6 +27,7 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
+  end
 
   private
 

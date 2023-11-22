@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     @booking.price = @booking.compute_price
     if @booking.save!
       flash.notice = "Réservation faite"
-      redirect_to root
       redirect_to dashboard_my_bookings_path
     else
       render :new
