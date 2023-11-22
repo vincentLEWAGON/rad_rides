@@ -10,7 +10,7 @@ user_4 = User.create!(first_name: "Carine", last_name: "Wagon", postal_code: 750
   Vehicle.create!(
     name: Faker::Vehicle.model,
     description: Faker::Vehicle.car_options,
-    category: Faker::Vehicle.car_type,
+    category: ["maritime", "terreste", "aerien"].sample,
     price: rand(50..200),
     user_id: User.all.sample.id
     )
@@ -18,4 +18,3 @@ end
 
 puts "Count user #{User.count}"
 puts "Count vehicles #{Vehicle.count}"
-
