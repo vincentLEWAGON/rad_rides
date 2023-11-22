@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   end
 
   def my_bookings
-    @my_bookings = Booking.all
+    @my_bookings = Booking.where(user: current_user)
   end
 
   def my_vehicles
