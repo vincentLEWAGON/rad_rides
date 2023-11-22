@@ -1,6 +1,6 @@
 <%= simple_form_for (@booking), method: :post, url: vehicle_bookings_path do |f| %>
   <%= f.input :start_date, as: :date %>
   <%= f.input :end_date, as: :date %>
-  <%= f.input :place %>
   <%= f.button :submit %>
 <% end %>
+<div> <%= console %> </div>
