@@ -14,7 +14,6 @@ vehicle1 = Vehicle.create!(
   category: "terrestre",
   price: rand(50..200),
   user_id: User.all.sample.id
-
 )
 
 vehicle2 = Vehicle.create!(
