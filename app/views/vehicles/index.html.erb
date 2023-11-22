@@ -12,7 +12,7 @@
       <!-- Carte 1 -->
       <div class="col-md-3 mb-3">
           <div class="card">
-              <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+              <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill %>
               <div class="card-body">
                   <h5 class="card-title"><%= vehicle.name %></h5>
                   <p class="card-text"><%= vehicle.description %></p>

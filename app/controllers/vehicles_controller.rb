@@ -7,9 +7,11 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user = current_user
-    if @vehicle.save
+    if @vehicle.save!
       flash.notice = "Annonce créee"
       redirect_to dashboard_my_vehicles_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
