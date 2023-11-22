@@ -1,0 +1,7 @@
+<h1>Laisser un commentaire</h1>
+<%= simple_form_for @reviews do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.button :envoyer %>
+<% end %>
+<br>
