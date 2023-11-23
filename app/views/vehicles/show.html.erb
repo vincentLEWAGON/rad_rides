@@ -6,12 +6,13 @@
     <h5 class="card-title"><%= @vehicle.name %></h5>
     <p class="card-text"><%= @vehicle.description %></p>
   </div>
-  <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush">
     <li class="list-group-item"> Catégorie : <%= @vehicle.category %></li>
     <li class="list-group-item"> Prix : <%= @vehicle.price %> euros</li>
   </ul>
   <div class="card-body">
-  <%end%>
+<%end%>
+
 
     <%= link_to "Réserver", new_vehicle_booking_path(@vehicle.id), class: "btn btn-primary" %>
 
