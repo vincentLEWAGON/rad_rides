@@ -13,7 +13,11 @@
     <%= link_to "Réserver", new_vehicle_booking_path(@vehicle.id), class: "btn btn-primary" %>
 
   </div>
-  <p> Moyenne : <%= @vehicle.reviews.sum(&:rating) /  @vehicle.reviews.count%>/5</p>
+  <% if @vehicle.reviews.count > 0 %>
+    <p> Moyenne : <%= @vehicle.reviews.sum(:rating) /  @vehicle.reviews.count%>/5</p>
+  <% else %>
+    <p> Soyez le premier à mettre un commentaire </p>
+  <% end %>
   <div class="container mt-5">
       <% @vehicle.reviews.each do |review| %>
         <div class="notification">
