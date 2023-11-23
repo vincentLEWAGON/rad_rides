@@ -9,6 +9,10 @@
     <li class="list-group-item"> Prix : <%= @vehicle.price %> euros</li>
   </ul>
   <div class="card-body">
+    raise
+    <a href="/vehicles/:vehicle_id/bookings/new" class="btn btn-primary">Réserver</a>
+    <a href="#" class="btn btn-primary" onClick="history.go(-1)">Retour</a>
+    <%# <a href="/vehicles" class="btn btn-primary">Retour</a> %>
 
     <%= link_to "Réserver", new_vehicle_booking_path(@vehicle.id), class: "btn btn-primary" %>
 
