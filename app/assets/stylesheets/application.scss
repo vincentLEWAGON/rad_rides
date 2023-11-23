@@ -10,6 +10,31 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+// require jquery.ui.datepicker
+
 
 
 @import "dashboards/my_bookings"
+
+// app/assets/stylesheets/application.scss
+// [...]
+
+// @import "flatpickr/dist/flatpickr";
+
+
+
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 15px;
+  padding: 0;
+}
+
+h1 {
+  color: red;
+}
+

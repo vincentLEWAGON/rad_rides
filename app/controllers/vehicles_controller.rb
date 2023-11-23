@@ -16,12 +16,29 @@ class VehiclesController < ApplicationController
   end
 
   def index
-    if params["aerien"] == "1"
-      @vehicles = Vehicle.where(category: "aerien")
-    else
-      @vehicles = Vehicle.all
-
+    @vehicles = Vehicle.all
+    if params[:filter].present?
+      if params["filter"]["aerien"] == "1"
+        @vehicles = @vehicles.where(category: "aerien")
+      end
+      if params["filter"]["maritime"] == "1"
+        @vehicles = @vehicles.where(category: "maritime")
+      end
+      if params["filter"]["terrestre"] == "1"
+        @vehicles = @vehicles.where(category: "terrestre")
+      end
     end
+
+    @markers = @vehicles.geocoded.map do |vehicle|
+      {
+        lat: vehicle.latitude,
+        lng: vehicle.longitude,
+        address: vehicle.address,
+        info_window_html: render_to_string(partial: "info_window", locals: {vehicle: vehicle}),
+        marker_html: render_to_string(partial: "marker", locals: {vehicle: vehicle})
+      }
+    end
+
   end
 
   def edit
@@ -35,12 +52,23 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle = Vehicle.find(params[:id])
+    @vehicle          = Vehicle.find(params[:id])
+    @bookings       = @vehicle.bookings
+    @bookings_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to:   booking.end_date
+      }
+    end
   end
+ 
+
 
   private
 
   def vehicle_params
     params.require(:vehicle).permit(:name, :description, :category, :price, :id, :photo)
   end
+
+
 end
