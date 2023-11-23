@@ -10,8 +10,3 @@ class Vehicle < ApplicationRecord
   validates :category, inclusion: { in: ["maritime", "terrestre", "aerien"] }
   validates :name, :description, :category, :price, presence: true
 end
-
-def average_of_reviews
-  reviews = reviews.count
-  @average = (sum(review.rating))/reviews
-end
