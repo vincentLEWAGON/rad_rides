@@ -13,4 +13,18 @@
     <%= link_to "Réserver", new_vehicle_booking_path(@vehicle.id), class: "btn btn-primary" %>
 
   </div>
+  <p> Moyenne : <%= @vehicle.reviews.sum(&:rating) /  @vehicle.reviews.count%>/5</p>
+  <div class="container mt-5">
+      <% @vehicle.reviews.each do |review| %>
+        <div class="notification">
+          <img src='https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo' class="avatar-large" />
+          <div class="notification-content">
+            <p><small>note : <%= review.rating %>/5</small></p>
+            <p><%= review.comment %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
