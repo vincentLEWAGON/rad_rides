@@ -14,7 +14,22 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    redirect_to dashboard_my_bookings_path
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to dashboard_my_bookings_path
   end
 
   private
