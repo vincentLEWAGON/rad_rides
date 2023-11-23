@@ -1,0 +1,42 @@
+.container-filter {
+  display: flex;
+  justify-content: space-between;  // Répartit l'espace disponible entre les checkboxes
+  align-items: center;  // Centre les checkboxes verticalement
+  width: 300px;  // Ajustez la largeur du conteneur selon vos besoins
+  margin: 0 auto;  // Centre le conteneur horizontalement
+  flex-direction: column;
+
+  .form-switch {
+    display: flex;
+    justify-content: space-around;  // Répartit l'espace autour des checkboxes
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .form-check {
+    display: flex;
+    justify-content: space-around;  // Répartit l'espace autour des checkboxes
+    margin-top: 20px;
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  .form-check-input {
+    border: 2px solid #333;
+  }
+}
+
+
+.vehicles {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  .card {
+    width: calc(30% - 20px);  // Ajustez la largeur selon vos besoins (moins la marge)
+    margin: 10px;  // Marge autour de chaque carte
+    box-sizing: border-box;
+  }
+}
