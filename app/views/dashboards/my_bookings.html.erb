@@ -1,1 +1,23 @@
+<h1>Mes réservations</h1>
 
+<div class="container mt-5">
+  <div class="row">
+    <% @my_bookings.each do |booking| %>
+      <!-- Carte 1 -->
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
+              <div class="card-body">
+                  <h5>Date de début:</h5>
+                  <p class="card-text"><%= booking.start_date %></p>
+                  <h5>Date de fin:</h5>
+                  <p class="card-text"><%= booking.end_date %></p>
+                  <h5>Total:</h5>
+                  <p class="card-text"><%= booking.price %> €</p>
+                  <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary" %>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

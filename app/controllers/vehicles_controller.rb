@@ -41,6 +41,16 @@ class VehiclesController < ApplicationController
 
   end
 
+  def edit
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  def update
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle.update(vehicle_params)
+    redirect_to dashboard_my_vehicles_path
+  end
+
   def show
     @vehicle = Vehicle.find(params[:id])
   end

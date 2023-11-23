@@ -1,0 +1,7 @@
+<h1>Laisser un commentaire</h1>
+<%= simple_form_for @review, url: booking_reviews_path(@booking) do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.button :submit, "Envoyer" %>
+<% end %>
+<br>
