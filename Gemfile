@@ -9,7 +9,8 @@ gem "simple_form"
 gem "autoprefixer-rails"
 gem "dotenv-rails"
 gem "cloudinary"
-
+gem "simple-form-datepicker"
+gem "geocoder"
 gem 'faker'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
