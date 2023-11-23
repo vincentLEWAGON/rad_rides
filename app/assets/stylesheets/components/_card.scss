@@ -1,29 +1,71 @@
-.square-card {
-    overflow: hidden;
-    height: 120px;
-    width: 120px;
-    border-radius: 3px;
-    margin: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-size-adjust: 70%;
+// .square-card {
+//     overflow: hidden;
+//     height: 120px;
+//     width: 120px;
+//     border-radius: 3px;
+//     margin: 10px;
+//     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//     display: flex;
+//     align-items: center;
+//     text-align: center;
+//     text-size-adjust: 70%;
 
 
+// }
+
+// .small-square-card {
+//   overflow: hidden;
+//   height: 60px;
+//   width: 60px;
+//   background-color: white;
+//   border-radius: 3px;
+//   background-size: cover;
+//   background-position: center;
+//   margin: 10px;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   display: flex;
+//   align-items: center;
+//   text-align: center;
+// }
+
+// .card {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 16px;
+// }
+
+.carte {
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.small-square-card {
-  overflow: hidden;
-  height: 60px;
-  width: 60px;
-  background-color: white;
-  border-radius: 3px;
-  background-size: cover;
-  background-position: center;
-  margin: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+.carte img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carte h1, .carte h2, .carte p {
   text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+
+.carte h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.carte h2 {
+  font-size: 18px;
+  color: #666;
+}
+
+.carte p {
+  font-size: 14px;
+  color: #999;
 }
