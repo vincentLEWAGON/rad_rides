@@ -12,7 +12,10 @@ user_4 = User.create!(first_name: "Carine", last_name: "Wagon", postal_code: 750
     description: Faker::Vehicle.car_options,
     category: ["maritime", "terrestre", "aerien"].sample,
     price: rand(50..200),
-    user_id: User.all.sample.id
+    user_id: User.all.sample.id,
+    address: Faker::Address.full_address,
+    latitude: rand(45.73..45.78),
+    longitude: rand(4.82..4.87)
     )
 end
 
