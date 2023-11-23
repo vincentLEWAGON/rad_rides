@@ -1,6 +1,6 @@
 <div class="card" style="width: 18rem;">
     <% if @vehicle.photo.attached?%>
-    <%= cl_image_tag @vehicle.photo.key, crop: :fill, class: "card-img-top" %>
+    <%= cl_image_tag @vehicle.photo.key, crop: :fill, class: "photo_card" %>
     <% else%>
   <div class="card-body">
     <h5 class="card-title"><%= @vehicle.name %></h5>
@@ -14,10 +14,14 @@
 <%end%>
 
 
-    <%= link_to "Réserver", new_vehicle_booking_path(@vehicle.id), class: "btn btn-primary" %>
+
 
   </div>
-  <p> Moyenne : <%= @vehicle.reviews.sum(&:rating) /  @vehicle.reviews.count%>/5</p>
+    <% if @vehicle.reviews.count > 0 %>
+     <p> Moyenne : <%= @vehicle.reviews.sum(&:rating) / @vehicle.reviews.count%>/5</p>
+    <% else %>
+     <p>Soyez le premier à mettre un commentaire</p>
+    <%end%>
   <div class="container mt-5">
       <% @vehicle.reviews.each do |review| %>
         <div class="notification">
@@ -37,20 +41,31 @@
   data-bookings="<%= @bookings_dates.to_json %>">
 
   <div class="container">
-  <div class="form-wrapper">
-    <h2>Reserver</h2>
-    <%= simple_form_for [@vehicle, Booking.new] do |f| %>
-      <%= f.input :start_date, label: "calendrier",
-                               as: :string,
-                               required: false,
-                               input_html: { id: "range_start", class: "d-none"} %>
-      <%# <%= f.input :end_date, label: false,
-                             as: :string,
-                             required: false,
-                             input_html: { id: "range_end", class: "d-none" } %> %>
-      <%= f.button :submit, "Book", class: "btn btn-primary" %>
-    <% end %>
+    <div class="form-wrapper">
+      <%= simple_form_for [@vehicle, Booking.new] do |f| %>
+        <div class="btn btn-primary">
+          <%= f.input :start_date, label: "calendrier",
+                                as: :string,
+                                required: false,
+                                input_html: { id: "range_start", class: "d-none"} %>
+          </div>
+        <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-</div>
+<%# # test %>
+<script>
+  document.getElementById("toggleButton").addEventListener("click", function() {
+    this.classList.toggle("active");
+    if (this.classList.contains("active")) {
+      console.log("Bouton activé");
+    } else {
+      console.log("Bouton désactivé");
+    }
+  });
+</script>
+<% console %>
+</body>
+</html>

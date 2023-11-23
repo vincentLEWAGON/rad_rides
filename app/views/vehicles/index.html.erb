@@ -11,22 +11,51 @@
 </div>
 
 <div class="container">
-  <div class="vehicles">
+  <%# <div class="vehicles">
     <% @vehicles.each do |vehicle| %>
       <!-- Carte 1 -->
-          <div class="card">
+          <%# <div class="card">
           <% if vehicle.photo.attached? %>
-              <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top"  %>
+              <%# <%= cl_image_tag vehicle.photo.key, crop: :fill, class: "photo_card"  %>
+          <%# <% end %>
+              <%# <div class="card-body">
+                  <h1><%= vehicle.category</h1> %>
+                  <%# <h5 class="card-title"><%= vehicle.name</h5> %>
+                  <%# <p class="card-text"><%= vehicle.price€/day</p> %>
+                  <%# <%= link_to "détails", vehicle_path(vehicle) %>
+              <%# </div> %>
+          <%# </div> %>
+    <%# <% end %>
+  <%# </div> %> %>
+  <div id="vehicleCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @vehicles.each_with_index do |vehicle, index| %>
+      <div class="carousel-item <%= 'active' if index.zero? %>">
+        <!-- Carte -->
+        <div class="card">
+          <% if vehicle.photo.attached? %>
+            <%= cl_image_tag vehicle.photo.key, crop: :fill, class: "photo_card" %>
           <% end %>
-              <div class="card-body">
-                  <h1><%= vehicle.category %></h1>
-                  <h5 class="card-title"><%= vehicle.name %></h5>
-                  <p class="card-text"><%= vehicle.price %>€/day</p>
-                  <%= link_to "détails", vehicle_path(vehicle) %>
-              </div>
+          <div class="card-body">
+            <h1><%= vehicle.category %></h1>
+            <h5 class="card-title"><%= vehicle.name %></h5>
+            <p class="card-text"><%= vehicle.price %>€/day</p>
+            <%= link_to "détails", vehicle_path(vehicle), class: "btn btn-primary" %>
           </div>
+        </div>
+        <!-- Fin de la carte -->
+      </div>
     <% end %>
   </div>
+  <a class="carousel-control-prev" href="#vehicleCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#vehicleCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 </div>
   <div class="map"
     data-controller="map"
