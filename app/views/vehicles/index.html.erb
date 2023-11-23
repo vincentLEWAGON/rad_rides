@@ -1,27 +1,53 @@
-<%= form_with url: "/vehicles", method: :get do |form| %>
-  <%= form.check_box :aerien %>
-  <%= form.label :aerien, "aerien" %>
-  <%= form.check_box :terrestre %>
-  <%= form.label :terrestre, "terrestre" %>
-  <%= form.submit %>
-<% end %>
+<div class="container-filter">
+<%= simple_form_for :filter, url: "/vehicles", method: :get do |form| %>
+  <div class="form-check form-switch">
+    <%= form.input :aerien, as: :boolean, input_html: {class: "form-check-input boxes", checked: params[:filter].present? && params[:filter][:aerien] == '1'} %>
+    <%= form.input :maritime, as: :boolean, input_html: {class: "form-check-input boxes", checked: params[:filter].present? && params[:filter][:maritime] == '1'} %>
+    <%= form.input :terrestre, as: :boolean, input_html: {class: "form-check-input boxes", checked: params[:filter].present? && params[:filter][:terrestre] == '1'} %>
+  </div>
 
-<div class="container mt-5">
-  <div class="row">
+  <%= form.submit "filtrer", class: "invisible" %>
+<% end %>
+</div>
+
+<div class="container">
+  <div class="vehicles">
     <% @vehicles.each do |vehicle| %>
       <!-- Carte 1 -->
-      <div class="col-md-3 mb-3">
           <div class="card">
           <% if vehicle.photo.attached? %>
               <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top"  %>
           <% end %>
               <div class="card-body">
+                  <h1><%= vehicle.category %></h1>
                   <h5 class="card-title"><%= vehicle.name %></h5>
                   <p class="card-text"><%= vehicle.price %>€/day</p>
                   <%= link_to "détails", vehicle_path(vehicle) %>
               </div>
           </div>
-      </div>
     <% end %>
   </div>
 </div>
+  <div class="map"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+
+<style>
+.invisible {
+  display : none;
+}
+
+
+</style>
+
+<script>
+  var checkBoxes = document.querySelectorAll(".boxes")
+  checkBoxes.forEach(checkboxe => {
+    checkboxe.addEventListener('click', () => {
+        document.querySelector(".invisible").click()
+    })
+  })
+</script>

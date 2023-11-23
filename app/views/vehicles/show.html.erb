@@ -1,6 +1,7 @@
 <div class="card" style="width: 18rem;">
   <% if @vehicle.photo.attached?%>
     <%= cl_image_tag @vehicle.photo.key, crop: :fill, class: "card-img-top" %>
+
   <% else%>
     <div class="card-body">
       <h5 class="card-title"><%= @vehicle.name %></h5>
