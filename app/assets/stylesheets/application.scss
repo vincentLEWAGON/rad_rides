@@ -10,6 +10,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+// require jquery.ui.datepicker
+
+// app/assets/stylesheets/application.scss
+// [...]
+
+// @import "flatpickr/dist/flatpickr";
+
+
 
 body {
   background-color: white;
@@ -20,4 +28,8 @@ body {
   line-height: 1.5;
   margin: 15px;
   padding: 0;
+}
+
+h1 {
+  color: red;
 }
