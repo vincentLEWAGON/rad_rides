@@ -54,8 +54,8 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle          = Vehicle.find(params[:id])
-    @bookings       = @vehicle.bookings
+    @vehicle = Vehicle.find(params[:id])
+    @bookings = @vehicle.bookings
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.start_date,
@@ -65,12 +65,9 @@ class VehiclesController < ApplicationController
   end
 
 
-
   private
 
   def vehicle_params
     params.require(:vehicle).permit(:name, :description, :category, :price, :id, :photo)
   end
-
-
 end
