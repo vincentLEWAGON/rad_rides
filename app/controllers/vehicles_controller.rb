@@ -7,6 +7,8 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.user = current_user
+    @vehicle.longitude = rand(4.82..4.87)
+    @vehicle.latitude = rand(45.73..45.78)
     if @vehicle.save!
       flash.notice = "Annonce créee"
       redirect_to dashboard_my_vehicles_path
@@ -61,6 +63,7 @@ class VehiclesController < ApplicationController
       }
     end
   end
+
 
   private
 
