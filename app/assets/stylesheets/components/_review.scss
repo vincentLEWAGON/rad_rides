@@ -1,10 +1,22 @@
 .notification {
+  background-color: #E0D3DE;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
+
+  h4 {
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .notification-content-note {
+    p{
+
+      font-size: 20px;
+    }
+  }
 }
 
 .notification .notification-content {
