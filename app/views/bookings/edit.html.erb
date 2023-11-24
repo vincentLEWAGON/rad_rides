@@ -1,28 +1,26 @@
-<div class="card" style="width: 18rem;">
-    <% if @booking.vehicle.photo.attached?%>
-    <%= cl_image_tag @booking.vehicle.photo.key, crop: :fill, class: "photo_card" %>
-    <% else%>
-  <div class="card-body">
-    <h5 class="card-title"><%= @booking.vehicle.name %></h5>
-    <p class="card-text"><%= @booking.vehicle.description %></p>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item"> Catégorie : <%= @booking.vehicle.category %></li>
-    <li class="list-group-item"> Prix : <%= @booking.vehicle.price %> euros</li>
-  </ul>
-  </div>
-<div class="card">
-<%end%>
 
-  </div>
-  <% if @booking.vehicle.reviews.count > 0 %>
-    <p> Moyenne : <%= @booking.vehicle.reviews.sum(:rating) /  @booking.vehicle.reviews.count%>/5</p>
-  <% else %>
-    <p> Soyez le premier à mettre un commentaire </p>
-  <% end %>
-  <div class="container mt-5">
+
+<div class="card-large">
+  <% if @booking.vehicle.photo.attached?%>
+    <%= cl_image_tag @booking.vehicle.photo.key, crop: :fill, class: "card-photo"%>
+  <%end%>
+  <div class="card-content">
+    <p class="card-title" style= "font-size: 24px"><%= @booking.vehicle.name %></p>
+    <br>
+    <p class="card-text" style= "font-size: 16px"><%= @booking.vehicle.description %></p>
+    <div>
+      <p class="list-group-item"style= "font-size: 16px; background: white"> Catégorie : <%= @booking.vehicle.category %></p>
+      <p class="list-group-item"style= "font-size: 16px; background: white"> Prix : <%= @booking.vehicle.price %> euros</p>
+    </div>
+    <% if @booking.vehicle.reviews.count > 0 %>
+      <p style= "padding: 8px 16px" style= "font-size: 16px"> Moyenne : <%= @bookinG.vehicle.reviews.sum(:rating) /  @booking.vehicle.reviews.count%>/5</p>
+    <% else %>
+      <p style= "font-size: 16px; color: grey"> Soyez le premier à mettre un commentaire </p>
+    <% end %>
+    <div>
       <% @booking.vehicle.reviews.each do |review| %>
         <div class="notification">
-          <img src='https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo' class="avatar-large" />
+          <%= image_tag('nono.jpg', class: "avatar-large") %>
           <div class="notification-content">
             <p><small>note : <%= review.rating %>/5</small></p>
             <p><%= review.comment %></p>
@@ -30,28 +28,26 @@
         </div>
       <% end %>
     </div>
-  </div>
-</div>
-
-
-<div id="booking-form-div"
-  data-controller ='flatpickr'
-  data-bookings="<%= @bookings_dates.to_json %>">
-
-  <div class="container">
-    <div class="form-wrapper">
-      <%= simple_form_for [@booking.vehicle, @booking] do |f| %>
-        <div class="btn btn-primary">
-          <%= f.input :start_date, label: "calendrier",
-                                as: :string,
-                                required: false,
-                                input_html: { id: "range_start", class: "d-none"} %>
-          </div>
-        <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
-      <% end %>
+    <div id="booking-form-div"
+      data-controller ='flatpickr'
+      data-bookings="<%= @bookings_dates.to_json %>">
+    </div>
+    <div>
+      <div class="form-wrapper">
+        <%= simple_form_for [@booking.vehicle, @booking] do |f| %>
+        <%= f.input :start_date, label: "calendrier",
+                                  as: :string,
+                                  required: false,
+                                  label_html: {class: "btn btn-primary btn-card-large"},
+                                  input_html: { id: "range_start", class: "d-none"} %>
+        <%= f.button :submit, "Book", class: "btn btn-primary btn-card-large", id: "toggleButton" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<div>
+
+<%# Calendrier  %>
 
 <%# # test %>
 <script>
@@ -64,17 +60,9 @@
     }
   });
 </script>
-<% console %>
 </body>
 </html>
 
 
 
 
-
-
-<%# <%= simple_form_for (@booking), method: :post, url: vehicle_bookings_path do |f| %>
-  <%# <%= f.input :start_date, as: :date %>
-  <%# <%= f.input :end_date, as: :date %>
-  <%# <%= f.button :submit, " Mettre à jour", class:"btn btn-primary" %>
-<%# <% end %>
