@@ -6,7 +6,7 @@
           <% @my_bookings.each do |booking| %>
           <div class="card" style="width: 18rem; margin-right:5px;">
             <%# <img src="..." class="card-img-top" alt="..."> %>
-            <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
+            <%= cl_image_tag booking.vehicle.photo.key, crop: :fill, class: "w-75 p-3" %>
             <div class="card-body">
               <h5 class="card-title" style="font-weight:600; font-size:18px;"><%= booking.vehicle.name %></h5>
               <p class="card-text" style="color:#404040"><%= truncate(booking.vehicle.description, length: 100) %></p>
@@ -28,7 +28,3 @@
     </div>
   </div>
 </div>
-
-
-
-
