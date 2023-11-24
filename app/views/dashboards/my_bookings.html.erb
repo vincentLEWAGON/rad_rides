@@ -8,7 +8,7 @@
           <div class="col-md-3 mb-3">
             <div class="card">
               <h2 class="card_text"><%= booking.vehicle.name %></h2>
-              <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
+              <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="photo_card" alt="Image de la carte">
               <div class="card-body">
                 <h5>Date de début:</h5>
                 <p class="card-text"><%= booking.start_date %></p>
@@ -17,9 +17,9 @@
                 <h5>Total:</h5>
                 <p class="card-text"><%= booking.price %> €</p>
                   <div class="bookingactionstyle">
-                    <%= button_to "Supprimer", booking_path(booking), class: "btn btn-danger", method: :delete, data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette réservation?" } %>
-                    <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary" %>
-                    <%= link_to "Modifier ma réservation", edit_vehicle_booking_path(booking.vehicle.id, booking.id), class: "btn btn-modify" %>
+                    <%= button_to "Supprimer", booking_path(booking), class: "btn btn-primary", method: :delete, data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette réservation?" } %>
+                    <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary"%>
+                    <%= link_to "Modifier ma réservation", edit_vehicle_booking_path(booking.vehicle.id, booking.id), class: "btn btn-primary" %>
               </div>
             </div>
           </div>
@@ -31,4 +31,3 @@
     </div>
 </div>
 </div>
-
