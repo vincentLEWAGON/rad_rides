@@ -1,3 +1,10 @@
+.container-reservation {
+
+  h1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+}
 
 .container-filter {
   display: flex;
