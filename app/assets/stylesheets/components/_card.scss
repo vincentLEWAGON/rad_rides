@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  height: 400px;
+  min-height: 400px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -33,6 +33,45 @@
   transition: transform 0.3s ease;
 }
 
+.card-men {
+  display: flex;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  background-color: white;
+}
+
+#reserv {
+  background-color: white;
+}
+
+.card-réservation-photo {
+  width: 100%;
+  padding: 1%;
+  border-radius: 10px;
+  height: 55%;
+  object-fit: fill;
+  display: flex;
+  justify-content: center;
+  object-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card-body-reserv {
+  border: 1px solid #ddd;
+  height: 40%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  h5, p {
+    padding: 2px;
+    margin: 2px;
+  }
+
+}
 // .square-card {
 //     overflow: hidden;
 //     height: 120px;
