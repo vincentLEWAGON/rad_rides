@@ -3,31 +3,28 @@
   <div class="d-flex justify-content-around">
     <div class="row">
       <% if @my_bookings.any? %>
-        <% @my_bookings.each do |booking| %>
-          <!-- Carte 1 -->
-          <div class="col-md-3 mb-3">
-            <div class="card">
-              <h2 class="card_text"><%= booking.vehicle.name %></h2>
-              <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="photo_card" alt="Image de la carte">
-              <div class="card-body">
-                <h5>Date de début:</h5>
-                <p class="card-text"><%= booking.start_date %></p>
-                <h5>Date de fin:</h5>
-                <p class="card-text"><%= booking.end_date %></p>
-                <h5>Total:</h5>
-                <p class="card-text"><%= booking.price %> €</p>
-                  <div class="bookingactionstyle">
-                    <%= button_to "Supprimer", booking_path(booking), class: "btn btn-primary", method: :delete, data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette réservation?" } %>
-                    <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary"%>
-                    <%= link_to "Modifier ma réservation", edit_vehicle_booking_path(booking.vehicle.id, booking.id), class: "btn btn-primary" %>
+          <% @my_bookings.each do |booking| %>
+          <div class="card" style="width: 18rem; margin-right:5px;">
+            <%# <img src="..." class="card-img-top" alt="..."> %>
+            <img src="https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo" class="card-img-top" alt="Image de la carte">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:600; font-size:18px;"><%= booking.vehicle.name %></h5>
+              <p class="card-text" style="color:#404040"><%= truncate(booking.vehicle.description, length: 100) %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= booking.start_date %> to <%= booking.end_date %></li>
+              <li class="list-group-item"><%= booking.price %> €</li>
+            </ul>
+            <div class="card-body">
+              <div class="bookingactionstyle d-flex flex-column gap-2">
+                <%= button_to "Supprimer", booking_path(booking), class: "btn btn-primary w-100", method: :delete, data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette réservation?" } %>
+                <%= link_to "Ecrire un commentaire", new_booking_review_path(booking.id), class: "btn btn-primary"%>
+                <%= link_to "Modifier ma réservation", edit_vehicle_booking_path(booking.vehicle.id, booking.id), class: "btn btn-primary" %>
               </div>
             </div>
           </div>
-      </div>
-        <% end %>
-      <% else %>
-        <%= "Vous n'avez aucune réservation" %>
+          <% end %>
       <% end %>
     </div>
-</div>
+  </div>
 </div>
