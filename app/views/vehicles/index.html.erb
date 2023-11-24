@@ -14,7 +14,7 @@
     <% @vehicles.each do |vehicle| %>
           <div class="card">
           <% if vehicle.photo.attached? %>
-              <%= cl_image_tag vehicle.photo.key, height: 300, width: 400, crop: :fill, class: "card-photo"  %>
+              <%= cl_image_tag vehicle.photo.key, height: 200, width: 400, crop: :fill, class: "card-photo" %>
           <% end %>
               <div class="card-body">
                   <h1><%= vehicle.name %></h1>

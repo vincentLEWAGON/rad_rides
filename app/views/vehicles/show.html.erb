@@ -1,28 +1,24 @@
-<div class="card" style="width: 18rem;">
-    <% if @vehicle.photo.attached?%>
-    <%= cl_image_tag @vehicle.photo.key, crop: :fill, class: "photo_card" %>
-    <% else%>
-  <div class="card-body">
-    <h5 class="card-title"><%= @vehicle.name %></h5>
-    <p class="card-text"><%= @vehicle.description %></p>
-  </div>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item"> Catégorie : <%= @vehicle.category %></li>
-    <li class="list-group-item"> Prix : <%= @vehicle.price %> euros</li>
-  </ul>
-  <div class="card-body">
-<%end%>
-
-  </div>
-  <% if @vehicle.reviews.count > 0 %>
-    <p> Moyenne : <%= @vehicle.reviews.sum(:rating) /  @vehicle.reviews.count%>/5</p>
-  <% else %>
-    <p> Soyez le premier à mettre un commentaire </p>
-  <% end %>
-  <div class="container mt-5">
+<div class="card-large">
+  <% if @vehicle.photo.attached?%>
+    <%= cl_image_tag @vehicle.photo.key, crop: :fill, class: "card-photo"%>
+  <%end%>
+  <div class="card-content">
+    <p class="card-title" style= "font-size: 24px"><%= @vehicle.name %></p>
+    <br>
+    <p class="card-text" style= "font-size: 16px"><%= @vehicle.description %></p>
+    <div>
+      <p class="list-group-item"style= "font-size: 16px; background: white"> Catégorie : <%= @vehicle.category %></p>
+      <p class="list-group-item"style= "font-size: 16px; background: white"> Prix : <%= @vehicle.price %> euros</p>
+    </div>
+    <% if @vehicle.reviews.count > 0 %>
+      <p style= "padding: 8px 16px" style= "font-size: 16px"> Moyenne : <%= @vehicle.reviews.sum(:rating) /  @vehicle.reviews.count%>/5</p>
+    <% else %>
+      <p style= "font-size: 16px; color: grey"> Soyez le premier à mettre un commentaire </p>
+    <% end %>
+    <div>
       <% @vehicle.reviews.each do |review| %>
         <div class="notification">
-          <img src='https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo' class="avatar-large" />
+          <%= image_tag('nono.jpg', class: "avatar-large") %>
           <div class="notification-content">
             <p><small>note : <%= review.rating %>/5</small></p>
             <p><%= review.comment %></p>
@@ -30,27 +26,26 @@
         </div>
       <% end %>
     </div>
-  </div>
-</div>
-
-
-<div id="booking-form-div"
-  data-controller ='flatpickr'
-  data-bookings="<%= @bookings_dates.to_json %>">
-
-  <div class="container">
-    <div class="form-wrapper">
-      <%= simple_form_for [@vehicle, Booking.new] do |f| %>
-          <%= f.input :start_date, label: "calendrier",
-                                as: :string,
-                                required: false,
-                                label_html: {class: "btn btn-primary"},
-                                input_html: { id: "range_start", class: "d-none"} %>
-          <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
-      <% end %>
+    <div id="booking-form-div"
+      data-controller ='flatpickr'
+      data-bookings="<%= @bookings_dates.to_json %>">
+    </div>
+    <div>
+      <div class="form-wrapper">
+        <%= simple_form_for [@vehicle, Booking.new] do |f| %>
+        <%= f.input :start_date, label: "calendrier",
+                                  as: :string,
+                                  required: false,
+                                  label_html: {class: "btn btn-primary btn-card-large"},
+                                  input_html: { id: "range_start", class: "d-none"} %>
+        <%= f.button :submit, "Book", class: "btn btn-primary btn-card-large", id: "toggleButton" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<div>
+
+<%# Calendrier  %>
 
 <%# # test %>
 <script>
