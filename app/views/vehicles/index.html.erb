@@ -14,6 +14,7 @@
   <%# <div class="vehicles">
     <% @vehicles.each do |vehicle| %>
       <!-- Carte 1 -->
+
           <%# <div class="card">
           <% if vehicle.photo.attached? %>
               <%# <%= cl_image_tag vehicle.photo.key, crop: :fill, class: "photo_card"  %>
@@ -36,6 +37,7 @@
           <% if vehicle.photo.attached? %>
             <%= cl_image_tag vehicle.photo.key, crop: :fill, class: "photo_card" %>
           <% end %>
+
           <div class="card-body">
             <h1><%= vehicle.category %></h1>
             <h5 class="card-title"><%= vehicle.name %></h5>
@@ -46,6 +48,8 @@
         <!-- Fin de la carte -->
       </div>
     <% end %>
+
+
   </div>
   <a class="carousel-control-prev" href="#vehicleCarousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

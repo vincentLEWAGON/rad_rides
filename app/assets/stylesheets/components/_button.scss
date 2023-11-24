@@ -16,3 +16,10 @@
   margin-top: 10px;
   background-color: lightgreen;
 }
+
+.center {
+  position: absolute;
+  left: 50%;
+  bottom: 10px; /* Ajuste la distance du bas selon tes besoins */
+  transform: translateX(-50%);
+}
