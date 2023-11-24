@@ -13,7 +13,6 @@
   <div class="card-body">
 <%end%>
 
-
   </div>
   <% if @vehicle.reviews.count > 0 %>
     <p> Moyenne : <%= @vehicle.reviews.sum(:rating) /  @vehicle.reviews.count%>/5</p>
