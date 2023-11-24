@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :vehicle
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :delete_all
   validates :start_date, :end_date, presence: true
   validates :start_date, comparison: { less_than_or_equal_to: :end_date }
   # validates :place, presence: true

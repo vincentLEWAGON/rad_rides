@@ -1,6 +1,80 @@
-<%= simple_form_for (@booking), method: :post, url: vehicle_bookings_path do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.button :submit, " Mettre à jour", class:"btn btn-primary" %>
-<% end %>
+<div class="card" style="width: 18rem;">
+    <% if @booking.vehicle.photo.attached?%>
+    <%= cl_image_tag @booking.vehicle.photo.key, crop: :fill, class: "photo_card" %>
+    <% else%>
+  <div class="card-body">
+    <h5 class="card-title"><%= @booking.vehicle.name %></h5>
+    <p class="card-text"><%= @booking.vehicle.description %></p>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Catégorie : <%= @booking.vehicle.category %></li>
+    <li class="list-group-item"> Prix : <%= @booking.vehicle.price %> euros</li>
+  </ul>
+  </div>
+<div class="card">
+<%end%>
 
+  </div>
+  <% if @booking.vehicle.reviews.count > 0 %>
+    <p> Moyenne : <%= @booking.vehicle.reviews.sum(:rating) /  @booking.vehicle.reviews.count%>/5</p>
+  <% else %>
+    <p> Soyez le premier à mettre un commentaire </p>
+  <% end %>
+  <div class="container mt-5">
+      <% @booking.vehicle.reviews.each do |review| %>
+        <div class="notification">
+          <img src='https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo' class="avatar-large" />
+          <div class="notification-content">
+            <p><small>note : <%= review.rating %>/5</small></p>
+            <p><%= review.comment %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div id="booking-form-div"
+  data-controller ='flatpickr'
+  data-bookings="<%= @bookings_dates.to_json %>">
+
+  <div class="container">
+    <div class="form-wrapper">
+      <%= simple_form_for [@booking.vehicle, @booking] do |f| %>
+        <div class="btn btn-primary">
+          <%= f.input :start_date, label: "calendrier",
+                                as: :string,
+                                required: false,
+                                input_html: { id: "range_start", class: "d-none"} %>
+          </div>
+        <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# # test %>
+<script>
+  document.getElementById("toggleButton").addEventListener("click", function() {
+    this.classList.toggle("active");
+    if (this.classList.contains("active")) {
+      console.log("Bouton activé");
+    } else {
+      console.log("Bouton désactivé");
+    }
+  });
+</script>
+<% console %>
+</body>
+</html>
+
+
+
+
+
+
+<%# <%= simple_form_for (@booking), method: :post, url: vehicle_bookings_path do |f| %>
+  <%# <%= f.input :start_date, as: :date %>
+  <%# <%= f.input :end_date, as: :date %>
+  <%# <%= f.button :submit, " Mettre à jour", class:"btn btn-primary" %>
+<%# <% end %>
