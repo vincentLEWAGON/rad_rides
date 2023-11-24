@@ -2,7 +2,17 @@
 <div class="container mt-5">
     <% current_user.reviews.each do |review| %>
       <div class="notification">
-        <img src='https://fakeimg.pl/600x400/041211/edb6e9?text=VEHICULE&font=museo' class="avatar-large" />
+     <% if review.booking.vehicle.photo.key? %>
+        <%= cl_image_tag review.booking.vehicle.photo.key, class: 'avatar-large'%>
+        <%end%>
+        <%# <img src=<'*' class="avatar-large" /> %>
+        <div>
+          <h4><%=review.booking.vehicle.name%></h4>
+        </div>
+        <div class="notification-content">
+          <p><small>du <%=review.booking.start_date%></small></p>
+          <p><small>au <%=review.booking.end_date %></small></p>
+        </div>
         <div class="notification-content">
           <p><small>note : <%= review.rating %>/5</small></p>
           <p><%= review.comment %></p>
