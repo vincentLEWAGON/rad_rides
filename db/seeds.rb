@@ -1,7 +1,7 @@
 require "open-uri"
 
 # Destruction des enregistrements existants dans l'environnement de développement
-[Review, Booking, Vehicle, User].each { |model| model.destroy_all if Rails.env.development? }
+[Review, Booking, Vehicle, User].each { |model| model.destroy_all }
 
 # URLs pour les photos
 $photo_urls = [
