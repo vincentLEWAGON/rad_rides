@@ -1,3 +1,4 @@
+
 .container-filter {
   display: flex;
   justify-content: space-between;  // Répartit l'espace disponible entre les checkboxes
@@ -29,14 +30,13 @@
 
 
 .vehicles {
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 1rem;
-  justify-content: flex-start;
-  .card {
-    width: calc(30% - 20px);  // Ajustez la largeur selon vos besoins (moins la marge)
-    margin: 10px;  // Marge autour de chaque carte
-    box-sizing: border-box;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 70%;
+
+  .container-filter {
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
 }
