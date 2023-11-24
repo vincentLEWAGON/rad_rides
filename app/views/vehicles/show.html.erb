@@ -40,13 +40,12 @@
   <div class="container">
     <div class="form-wrapper">
       <%= simple_form_for [@vehicle, Booking.new] do |f| %>
-        <div class="btn btn-primary">
           <%= f.input :start_date, label: "calendrier",
                                 as: :string,
                                 required: false,
+                                label_html: {class: "btn btn-primary"},
                                 input_html: { id: "range_start", class: "d-none"} %>
-          </div>
-        <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
+          <%= f.button :submit, "Book", class: "btn btn-primary", id: "toggleButton" %>
       <% end %>
     </div>
   </div>
