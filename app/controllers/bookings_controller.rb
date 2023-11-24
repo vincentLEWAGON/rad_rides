@@ -20,10 +20,16 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @bookings_dates = [{
+        from: @booking.start_date,
+        to:   @booking.end_date
+      }]
   end
 
   def update
     @booking = Booking.find(params[:id])
+    @booking.start_date = params[:booking][:start_date].split(' to ').first.to_date
+    @booking.end_date = params[:booking][:start_date].split(' to ').last.to_date
     @booking.update(booking_params)
     redirect_to dashboard_my_bookings_path
   end
